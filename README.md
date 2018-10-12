@@ -1,4 +1,4 @@
-# snake_enemy
+# snakemies
 Daniel, Dean and Ross Snake Variant with Enemies and periodic boundaries
 
 Daniel - [danielst0ne](https://github.com/danielst0ne/)

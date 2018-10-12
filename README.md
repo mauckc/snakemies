@@ -2,21 +2,27 @@
 Daniel, Dean and Ross Snake Variant with Enemies and periodic boundaries
 
 Daniel - [danielst0ne](https://github.com/danielst0ne/)
+
 Dean - [ShinkaiSetsuna](https://github.com/shinkaisetsuna/)
 
 Try it out:
+
 [Play Snakemies!](https://mauckc.github.com/snakemies/)
 
 <img src="./images/score_2.png" alt="drawing" width="400"/>
 
 Using:[p5.js](https://p5js.org/)
+
 [source](https://editor.p5js.org/mauckc/sketches/SyjSE8Tqm)
 
 ## Reference
+
 [Daniel Schiffman](https://shiffman.net/)
+
 [Snake Game Redux](https://www.youtube.com/watch?v=OMoVcohRgZA)
 
 Basic Snake implementation in p5.js
+
 [editor.p5.js](https://editor.p5js.org/codingtrain/sketches/HkDVpSvDm)
 
 ## License
@@ -69,8 +75,11 @@ setDir(x, y) {
     this.ydir = y;
   }
 ```
+
 #### Update Function
 Update the snake every frame
+
+Handles periodic boundary conditions
 ```javascript
   update() {    
     let head = this.body[this.body.length-1].copy();

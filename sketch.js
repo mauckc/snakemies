@@ -45,6 +45,7 @@ let end = false;
 var survival = 0;
 // an HTML range slider
 var slider;
+var sliderDifficulty;
 
 function setup() {
   createCanvas(800, 800);
@@ -65,6 +66,7 @@ function resetSketch() {
   frameRate(fps);
   snake = new Snake();
   spawnFood();
+  index = 0;
 
   // Create Array of Enemies
   noStroke();
@@ -113,6 +115,7 @@ function keyPressed() {
 }
 
 function draw() {
+  textSize(20);
   if (end){
     background(slider.value());
     textAlign(floor(width/2));
@@ -121,6 +124,7 @@ function draw() {
     textSize(100)
     if (index-2 == 0){
     fill(red);
+    //textAlign(CENTER);
     text("Final Score: "+0,10,550);
 }
     else{
@@ -167,15 +171,15 @@ function draw() {
     // update the input pause until next frame
     inputDelay = 0;
     
+    textSize(40);
     //20181011 daniel 
     //score thing in top left  
     if (index-2 == 0){
     
-    text("Score: "+0,740,20);
+    text("Score: "+0,width-155,40);
 }
     else{
-    text("Score: "+(index-2),740,20)
+    text("Score: "+(index-2), width-155,40)
     }
   }
 }
-

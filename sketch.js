@@ -15,10 +15,15 @@
 //grabbing nums from various game entities
 //output score etc to top left 
 //output # of enemies on top right
-//i have a really bad headache so let's make it easier to look at.
 
 // Hi Scores?
+//colors
+let red = "#990000";
+let ocean = "#009999"
+let cyan = "#0ebaba";
+let lime = "#0eba0e";
 
+//end colors
 let snake;
 let rez = 1;
 let food;
@@ -37,7 +42,7 @@ var enemies = [];
 var index = 0;
 let inputDelay = 0;
 let end = false;
-
+var survival = 0;
 // an HTML range slider
 var slider;
 
@@ -48,6 +53,7 @@ function setup() {
   button.mousePressed(resetSketch);
   // Set up slider with range between 0 and 255 with starting value of 127
   slider = createSlider(0, 255, 127);
+  setInterval(function(){survival++;}, 1000);
 }
 
 function resetSketch() {
@@ -101,7 +107,7 @@ function keyPressed() {
     } else if (keyCode === UP_ARROW && snake.ydir != 10) {
       snake.setDir(0, -10);
     } else if (key == ' ') {
-      snake.grow();
+      resetSketch();
     }
   }
 }
@@ -109,9 +115,18 @@ function keyPressed() {
 function draw() {
   if (end){
     background(slider.value());
-    textAlign(floor(width/2))
-    text("GGEZ",200,200);
-
+    textAlign(floor(width/2));
+    textSize(150);
+    text("Game Over",10,400);
+    textSize(100)
+    if (index-2 == 0){
+    fill(red);
+    text("Final Score: "+0,10,550);
+}
+    else{
+    fill(red);
+    text("Final Score: "+(index-2),10,550);
+    }
   }
   
   //regular draw
@@ -142,7 +157,7 @@ function draw() {
     // Food
     noStroke();
     if(isFoodSpecial){
-      fill("#0ebaba");
+      fill(cyan);
     } else {
     fill("#0eba0e");
     }
@@ -151,6 +166,16 @@ function draw() {
 
     // update the input pause until next frame
     inputDelay = 0;
+    
+    //20181011 daniel 
+    //score thing in top left  
+    if (index-2 == 0){
+    
+    text("Score: "+0,740,20);
+}
+    else{
+    text("Score: "+(index-2),740,20)
+    }
   }
 }
 

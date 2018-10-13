@@ -1,22 +1,3 @@
-// TO DO: 20181010
-
-// TO DO: 20181009
-
-// Debug task: Why are the enemies outputing 'unnamed' below 'enemy' in text?
-// 		What should that be?
-//
-
-// Use 180 degree rotation matrix to choose where to spawn new enemies when the snake eats
-//  this may requre adding parameters tto the enemy class
-
-// Loading Menu Screen
-// Implement Game Over etc
-//score file
-//grabbing nums from various game entities
-//output score etc to top left 
-//output # of enemies on top right
-
-// Hi Scores?
 //colors
 let red = "#990000";
 let ocean = "#009999"
@@ -57,6 +38,8 @@ function setup() {
   button.mousePressed(resetSketch);
   // Set up slider with range between 0 and 255 with starting value of 127
   slider = createSlider(0, 255, 200);
+  slider.position(25, 25);
+  button.position(25, height - 25);
   setInterval(function(){survival++;}, 1000);
 }
 

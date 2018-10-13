@@ -30,12 +30,13 @@ var sliderDifficulty;
 
 var startingEnemyCount = 2;
 var canvas;
+var button;
 
 function setup() {
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   //createCanvas(width, height);
   resetSketch();
-  var button = createButton('reset');
+  button = createButton('reset');
   button.mousePressed(resetSketch);
   // Set up slider with range between 0 and 255 with starting value of 127
   slider = createSlider(0, 255, 200);
@@ -54,7 +55,7 @@ function resetSketch() {
   snake = new Snake();
   spawnFood();
   index = 0;
-
+  // button.position(25, height - 25);
   // Create Array of Enemies
   noStroke();
   // var wideCount = width / unit;
@@ -105,6 +106,9 @@ function keyPressed() {
 function draw() {
   textSize(20);
   if (end){
+    button.show();
+    button.size(width/10, height/20);
+    button.position(width/2,height/2);
     background(slider.value());
     textAlign(floor(width/2));
     textSize(150);
@@ -122,6 +126,9 @@ function draw() {
     if (key == ' ') {
       end = false;
       resetSketch();
+      // reset button position
+      button.position(25, height - 25);
+      button.hide();
     }
   }
   
@@ -208,4 +215,6 @@ function mousePressed()
     snake.setDir(-10, 0) // LEFT
     }
   }
+  button.position(25, height - 25);
+  button.hide();
 }

@@ -28,6 +28,7 @@ var survival = 0;
 var slider;
 var sliderDifficulty;
 
+var startingEnemyCount = 2;
 var canvas;
 
 function setup() {
@@ -61,7 +62,7 @@ function resetSketch() {
   // count = wideCount * highCount;
   // index for each enemy
   
-  for (var mu = 0; mu < 2; mu++) {
+  for (var mu = 0; mu < startingEnemyCount; mu++) {
     enemies[index++] = new Enemy(index);
   }
 }
@@ -94,9 +95,10 @@ function keyPressed() {
       snake.setDir(0, 10);
     } else if (keyCode === UP_ARROW && snake.ydir != 10) {
       snake.setDir(0, -10);
-    } else if (key == ' ') {
+    //} else if (key == ' ') {
       //resetSketch();
     }
+    
   }
 }
 
@@ -182,3 +184,28 @@ window.onresize = function() {
   height = h;
 };
 
+
+// Added Mouse Functionality
+function mousePressed()
+{
+  // Check if in upper right HALF of screen
+  if (mouseY - (height/2) > -(mouseX - (width/2))){
+    // Check if in the top triangle
+    if (mouseY - (height/2) > (mouseX - (width/2))){
+    snake.setDir(0,10) // DOWN
+    // Else must be in the right triangle
+    }else
+    {
+    snake.setDir(10, 0) // RIGHT
+    }
+  }else
+  { // Else it must be in the bottom left HALF of screen
+    if (mouseY - (height/2) < (mouseX - (width/2)))
+    {
+    snake.setDir(0,-10) // UP
+    }else
+    {
+    snake.setDir(-10, 0) // LEFT
+    }
+  }
+}

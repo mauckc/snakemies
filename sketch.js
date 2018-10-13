@@ -42,6 +42,7 @@ function setup() {
   slider = createSlider(0, 255, 200);
   slider.position(25, 25);
   button.position(25, height - 25);
+  button.size(width/10, height/20);
   setInterval(function(){survival++;}, 1000);
 }
 
@@ -195,26 +196,29 @@ window.onresize = function() {
 // Added Mouse Functionality
 function mousePressed()
 {
-  // Check if in upper right HALF of screen
-  if (mouseY - (height/2) > -(mouseX - (width/2))){
-    // Check if in the top triangle
-    if (mouseY - (height/2) > (mouseX - (width/2))){
-    snake.setDir(0,10) // DOWN
-    // Else must be in the right triangle
+  if (inputDelay == 0) {
+    inputDelay = 1;
+    // Check if in upper right HALF of screen
+    if (mouseY - (height/2) > -(mouseX - (width/2))){
+      // Check if in the top triangle
+      if (mouseY - (height/2) > (mouseX - (width/2)) && (snake.ydir != -10)){
+      snake.setDir(0,10) // DOWN
+      // Else must be in the right triangle
+      }else if(snake.xdir != -10)
+      {
+      snake.setDir(10, 0) // RIGHT
+      }
     }else
-    {
-    snake.setDir(10, 0) // RIGHT
+    { // Else it must be in the bottom left HALF of screen
+      if (mouseY - (height/2) < (mouseX - (width/2)) && (snake.ydir != 10))
+      {
+      snake.setDir(0,-10) // UP
+      }else if(snake.xdir != 10)
+      {
+      snake.setDir(-10, 0) // LEFT
+      }
     }
-  }else
-  { // Else it must be in the bottom left HALF of screen
-    if (mouseY - (height/2) < (mouseX - (width/2)))
-    {
-    snake.setDir(0,-10) // UP
-    }else
-    {
-    snake.setDir(-10, 0) // LEFT
+    button.position(25, height - 25);
+    button.hide();
     }
-  }
-  button.position(25, height - 25);
-  button.hide();
 }

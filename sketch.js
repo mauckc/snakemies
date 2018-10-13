@@ -1,29 +1,9 @@
-// TO DO: 20181010
-
-// TO DO: 20181009
-
-// Debug task: Why are the enemies outputing 'unnamed' below 'enemy' in text?
-// 		What should that be?
-//
-
-// Use 180 degree rotation matrix to choose where to spawn new enemies when the snake eats
-//  this may requre adding parameters tto the enemy class
-
-// Loading Menu Screen
-// Implement Game Over etc
-//score file
-//grabbing nums from various game entities
-//output score etc to top left 
-//output # of enemies on top right
-
-// Hi Scores?
-//colors
+// colors
 let red = "#990000";
 let ocean = "#009999"
 let cyan = "#0ebaba";
 let lime = "#0eba0e";
 
-//end colors
 let snake;
 let rez = 1;
 let food;
@@ -43,6 +23,7 @@ var index = 0;
 let inputDelay = 0;
 let end = false;
 var survival = 0;
+
 // an HTML range slider
 var slider;
 var sliderDifficulty;
@@ -70,11 +51,7 @@ function resetSketch() {
 
   // Create Array of Enemies
   noStroke();
-  // var wideCount = width / unit;
-  // var highCount = height / unit;
-  // count = wideCount * highCount;
-  // index for each enemy
-  
+	
   for (var mu = 0; mu < 2; mu++) {
     enemies[index++] = new Enemy(index);
   }
@@ -123,13 +100,17 @@ function draw() {
     text("Game Over",10,400);
     textSize(100)
     if (index-2 == 0){
-    fill(red);
-    //textAlign(CENTER);
-    text("Final Score: "+0,10,550);
-}
+      fill(red);
+      //textAlign(CENTER);
+      text("Final Score: "+0,10,550);
+    }
     else{
-    fill(red);
-    text("Final Score: "+(index-2),10,550);
+      fill(red);
+      text("Final Score: "+(index-2),10,550);
+    }
+    if (key == '') {
+      end = false;
+      resetSketch();
     }
   }
   
@@ -163,7 +144,7 @@ function draw() {
     if(isFoodSpecial){
       fill(cyan);
     } else {
-    fill("#0eba0e");
+      fill("#0eba0e");
     }
     rect(food.x, food.y, foodxsize, foodysize);
     text("food", food.x + 18, food.y + 20, 50, 50);
@@ -179,7 +160,8 @@ function draw() {
     text("Score: "+0,width-155,40);
 }
     else{
-    text("Score: "+(index-2), width-155,40)
+      text("Score: "+(index-2), width-155,40)
     }
   }
 }
+
